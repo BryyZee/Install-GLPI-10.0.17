@@ -62,7 +62,7 @@ apply_gradient
 echo "Entrez l'adresse IP ou le nom de domaine de votre futur serveur GLPI :"
 read  ip_glpi_srv
 
-sudo sed -i "s/@IP-srv/$ip_glpi_srv/g" glpi-administratif.conf
+sed -i "s/@IP-srv/$ip_glpi_srv/g" glpi-administratif.conf
 
 
 # Demander à l'utilisateur de créer un mot de passe root MySQL
@@ -130,7 +130,7 @@ echo "Création et configuration de la base de données GLPI...Fait"
 
 # Création d'un certificat auto-signé
 echo "Création et configuration du certificat auto-signé..."
-sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/apache-glpi-selfsigned.key -out /etc/ssl/certs/apache-glpi-selfsigned.crt -subj "/C=FR/ST=France/L=Paris/O=MonOrganisation/OU=IT/CN=localhost" 1>/dev/null 2>error.log
+openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/apache-glpi-selfsigned.key -out /etc/ssl/certs/apache-glpi-selfsigned.crt -subj "/C=FR/ST=France/L=Paris/O=MonOrganisation/OU=IT/CN=localhost" 1>/dev/null 2>error.log
 echo "Création et configuration du certificat auto-signé..."
 
 # Configuration Apache2 et PHP8.2 pour GLPI
